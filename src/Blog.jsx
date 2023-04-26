@@ -1,26 +1,27 @@
 import React from "react";
+import { Link,Outlet } from "react-router-dom";
+import  {blogdata}  from "./blogdata";
 
 function Blog() {
   return (
     <>
       <h1>BlogPage</h1>
+      <Outlet/>
       <ul>
-        {blogdata.map(post=>(
-          <BlogLink post={post}/>
+        {blogdata.map((post) => (
+          <BlogLink key={post.slug} post={post} />
         ))}
       </ul>
     </>
   );
 }
 
-
-
-function BlogLink({post}) {
+function BlogLink({ post }) {
   return (
     <li>
-      <Link to={`/blog${post.slug}`}>{post.title}</Link>
+      <Link to={`/blog/${post.slug}`}>{post.title}</Link>
     </li>
-  )
+  );
 }
 
 export default Blog;
