@@ -2,7 +2,7 @@ const blogdata = [];
 blogdata.push({
   slug: 'aprende-react',
   title: 'curso de react',
-  author: 'camilo meneses',
+  author: 'sergio',
   date: '12 de mayo 2212'
 });
 blogdata.push({

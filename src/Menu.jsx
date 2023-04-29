@@ -1,24 +1,36 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useAuth } from "./auth";
 
 function Menu() {
+  const auth = useAuth();
   const rutas = [];
-  rutas.push({
-    to: "/blog",
-    text: "BLOG",
-  });
-  rutas.push({
-    to: "/profile",
-    text: "PROFILE",
-  });
-  rutas.push({
-    to: "/login",
-    text: "LOGIN",
-  });
-  rutas.push({
-    to: "/logout",
-    text: "LOGOUT",
-  });
+  if (!auth.user) {
+    rutas.push({
+      to: "/blog",
+      text: "BLOG",
+    });
+
+    rutas.push({
+      to: "/login",
+      text: "LOGIN",
+    });
+  } else {
+    rutas.push({
+      to: "/blog",
+      text: "BLOG",
+    });
+
+    rutas.push({
+      to: "/profile",
+      text: "PROFILE",
+    });
+    rutas.push({
+      to: "/logout",
+      text: "LOGOUT",
+    });
+  }
+
   return (
     <nav>
       <ul>
